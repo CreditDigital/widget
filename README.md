@@ -112,7 +112,7 @@ export default class App extends React.Component {
 ```
 
 ### Checkout without the checkout button
-You can build your own checkout experience as long as you make a `GET` request to CreditDigital at the end. Remember to encode the URL.
+You can build your own checkout experience as long as you make a `GET` request to CreditDigital at the end.
 ```javascript
 import React from "react";
 import CreditDigital from "creditdigital-widget";
