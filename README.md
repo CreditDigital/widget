@@ -1,6 +1,8 @@
 # CreditDigital JS Widget
 To be able to use this widget you must have an account with CreditDigital. If you don't have one, please [sign up](https://www.creditdigital.co.uk/business).
 
+The widget has no external dependencies 🎉
+
 ## Basic usage
 The widget provides:
 - A information box with the monthly finance price given a price. This can be used both on product page and on the checkout.
@@ -122,9 +124,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const href = encodeURI(`${this.creditDigital.creditDigitalURL}?cash_price=500`);
-    
-    return <a href={`${href}`} target="_blank">Checkout with CreditDigital</a>;
+    return <a href={`${this.creditDigital.creditDigitalURL}?cash_price=500`} target="_blank">Checkout with CreditDigital</a>;
   }
 }
 ```
