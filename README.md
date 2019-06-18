@@ -11,7 +11,7 @@ The widget provides:
 #### Monthy pricing box
 To make the monthly pricing box appear:
 ```javascript
-var creditDigital = new Creditdigital();
+var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the monthly pricing box to appear
 var price = 1000; // The total amount for monthly finance
 
@@ -20,7 +20,7 @@ CreditDigital.productListingHtml(targetNode, price);
 
 For the checkout page:
 ```javascript
-var creditDigital = new Creditdigital();
+var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
 var options = { cash_price: 1000, business_token: "abc-123", } // The required data for the widget
 
@@ -31,7 +31,7 @@ By default, when a user clicks on the checkout button, they will be redirect to 
 ### Customize the callback
 You can pass your own callback to the `.checkoutHtml` which will override the redirect to CreditDigital when the checkout button is clicked. Your callback function will receive the full encoded url for the CreditDigital application.
 ```javascript
-var creditDigital = new Creditdigital();
+var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
 var options = { cash_price: 1000, business_token: "abc-123", } // The required data for the widget
 var myCallback = function (url) {
@@ -56,7 +56,7 @@ CreditDigital by default imposes a £250 minimum amount. If the total amount of 
 
 You can change the minimumAmount to fit your requirements as long as it's more than the CreditDigital imposed one:
 ```javascript
-var creditDigital = new Creditdigital();
+var creditDigital = new CreditDigital();
 creditDigital.setMinimumAmount(300);
 ```
 
