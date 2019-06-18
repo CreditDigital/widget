@@ -106,13 +106,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <p>The monthly price will be { this.productListingMonthlyRate(props.totalAmount) }</p>;
+    return <p>The monthly price will be { this.creditDigital.productListingMonthlyRate(props.totalAmount) }</p>;
   }
 }
 ```
 
 ### Checkout without the checkout button
-You can build your own checkout experience as long as you make a `GET` request to CreditDigital at the end.
+You can build your own checkout experience as long as you make a `GET` request to CreditDigital at the end. Remember to encode the URL.
 ```javascript
 import React from "react";
 import CreditDigital from "creditdigital-widget";
@@ -124,6 +124,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    const href = encodeURI(`${this.creditDigital.creditDigitalURL}?cash_price=500`);
+
     return <a href={`${this.creditDigital.creditDigitalURL}?cash_price=500`} target="_blank">Checkout with CreditDigital</a>;
   }
 }
