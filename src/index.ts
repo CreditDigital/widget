@@ -130,7 +130,7 @@ export default class CreditDigital {
 
     node.innerHTML = `<div>
         <a style="color:black;cursor:pointer;" id="credit-digital-checkout">
-          <img src="https://widget.creditdigital.co.uk/paywithcd.png"https://widget.creditdigital.co.uk/paywithcd.png" />
+          <img src="https://widget.creditdigital.co.uk/paywithcd.png" alt="pay monthly with CreditDigital" />
         </a>
       </div>`;
 
