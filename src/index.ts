@@ -95,6 +95,10 @@ export default class CreditDigital {
   }
 
   public productListingMonthlyRate(productPrice: number): string {
+    if (productPrice < this.minimumAmount) {
+      return '0.00';
+    }
+
     const monthlyRate =
       (productPrice * this.interestRate * Math.pow(1 + this.interestRate, this.durationOfTermInMonths)) /
       (Math.pow(1 + this.interestRate, this.durationOfTermInMonths) - 1);

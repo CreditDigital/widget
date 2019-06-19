@@ -23,11 +23,10 @@ test('setMinimumAmount does not change the amount if it is lower than the minimu
 
   expect(creditDigital.minimumAmount).toEqual(250);
 });
-
-test('productListingMonthlyRate when product price is 0', () => {
+test('productListingMonthlyRate when product price is less than the minimumAmount', () => {
   const creditDigital = new CreditDigital();
 
-  expect(creditDigital.productListingMonthlyRate(0)).toEqual('0.00');
+  expect(creditDigital.productListingMonthlyRate(5)).toEqual('0.00');
 });
 
 test('productListingMonthlyRate when product price is a simple number', () => {

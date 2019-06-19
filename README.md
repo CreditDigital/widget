@@ -72,7 +72,7 @@ If you prefer to override some or all of the styles to make the resulting HTMN m
 
 ```css
 /* The main widget container */
-#credit-digital-product-listing {}
+.creditdigital {}
 
 /* Controls the container that displays the monthly price and logo */
 .creditdigital-monthly-rate {}
@@ -110,6 +110,8 @@ export default class App extends React.Component {
   }
 }
 ```
+
+*Note: If you the amount passed in is less than the minimumAmount, a "0.00" will be returned*
 
 ### Checkout without the checkout button
 You can build your own checkout experience as long as you make a `GET` request to CreditDigital at the end. Remember to encode the URL.
