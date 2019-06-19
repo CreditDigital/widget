@@ -1,7 +1,7 @@
 const MINIMUM_AMOUNT_BY_CREDITDIGITAL = 250;
 const DURATION_OF_TERM_IN_MONTHS = 12;
 const INTEREST_RATE = 0.02025;
-const CREDIT_DIGITAL_URL = 'https://www.creditdigital.co.uk/loans/new';
+const CREDIT_DIGITAL_URL = "https://www.creditdigital.co.uk/loans/new";
 
 export interface ICheckoutPayload {
   [index: string]: any;
@@ -81,7 +81,7 @@ export default class CreditDigital {
     if (options && options.skipCSSInjection) {
       return;
     }
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.innerHTML = productCSS;
     document.body.appendChild(style);
   }
@@ -96,7 +96,7 @@ export default class CreditDigital {
 
   public productListingMonthlyRate(productPrice: number): string {
     if (productPrice < this.minimumAmount) {
-      return '0.00';
+      return "0.00";
     }
 
     const monthlyRate =
@@ -117,11 +117,11 @@ export default class CreditDigital {
 
     if (productPrice < this.minimumAmount) {
       node.innerHTML = productHTML.replace(
-        '%s',
+        "%s",
         `Monthly repayment plans are available for purchases over <strong>&pound;${this.minimumAmount}</strong>`,
       );
     } else {
-      node.innerHTML = productHTML.replace('%s', `Or pay as little as <strong>&pound;${monthlyPrice}</strong>`);
+      node.innerHTML = productHTML.replace("%s", `Or pay as little as <strong>&pound;${monthlyPrice}</strong>`);
     }
   }
 
@@ -155,8 +155,8 @@ export default class CreditDigital {
       queryParams.push(`${key}=${data[key]}`);
     });
 
-    const encodedUrl = encodeURI(`${this.creditDigitalURL}?${queryParams.join('&')}`);
+    const encodedUrl = encodeURI(`${this.creditDigitalURL}?${queryParams.join("&")}`);
 
-    checkoutImg.addEventListener('click', _ => callback(encodedUrl));
+    checkoutImg.addEventListener("click", _ => callback(encodedUrl));
   }
 }
