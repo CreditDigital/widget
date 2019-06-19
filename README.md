@@ -15,7 +15,7 @@ var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the monthly pricing box to appear
 var price = 1000; // The total amount for monthly finance
 
-CreditDigital.productListingHtml(targetNode, price);
+creditDigital.productListingHtml(targetNode, price);
 ```
 
 For the checkout page:
@@ -24,7 +24,7 @@ var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
 var options = { cash_price: 1000, business_token: "abc-123", } // The required data for the widget
 
-CreditDigital.checkoutHtml(targetNode, options);
+creditDigital.checkoutHtml(targetNode, options);
 ```
 By default, when a user clicks on the checkout button, they will be redirect to CreditDigital to start the application process.
 
@@ -39,7 +39,7 @@ var myCallback = function (url) {
   console.log(url);
 }
 
-CreditDigital.checkoutHtml(targetNode, options, myCallback);
+creditDigital.checkoutHtml(targetNode, options, myCallback);
 ```
 
 

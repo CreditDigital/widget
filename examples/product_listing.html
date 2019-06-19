@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Product listing example</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Example store</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="my-5">
+      <div class="row">
+        <div class="col-sm-7">
+          <img
+            src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+            alt="bag image" style="width:100%" />
+        </div>
+        <div class="col-sm-5">
+          <h1>This is an amazing bag</h1>
+          <p class="lead">
+            You should hurry and buy this bag
+          </p>
+          <p>This beautiful yellow shoulder tote allows you to bring everything with you whenever you
+            need to, but fashionably of course! Keep yourself organized with the interior and exterior pockets while
+            getting compliments from everyone on the gorgeous gold hardware on this stunning bag.</p>
+          <h3>
+            &pound;1000
+            <small class="text-muted"><s>&pound;2000</s></small>
+          </h3>
+          <div id="creditdigital-product-listing" class="my-5"></div>
+          <div class="form-group">
+            <label for="quantity">Please select quantity</label>
+            <select class="form-control" id="quantity">
+              <option selected>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary">
+            Add to cart &pound;<span id="total-for-cart">1000</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../dist/bundle.js"></script>
+  <script>
+    /* START CREDITDIGITAL CODE */
+    var creditDigital = new CreditDigital();
+    var targetNode = "#creditdigital-product-listing";
+    var price = 1000;
+
+    creditDigital.productListingHtml(targetNode, price);
+
+    /* END CREDITDIGITAL CODE */
+
+    // The rest of the Javascript code is to illustrate how you could update the monthly price
+    // from various other changes in the UI.
+    // The example we will use is increasing the quantity of the product we want to buy
+
+    var addToCardTotalEle = document.getElementById("total-for-cart");
+
+    document.getElementById("quantity").addEventListener("change", function (e) {
+      var quantitySelected = e.target.value;
+      var totalCost = price * quantitySelected;
+
+      creditDigital.productListingHtml(targetNode, price * quantitySelected);
+      addToCardTotalEle.textContent = totalCost;
+    });
+  </script>
+</body>
+
+</html>

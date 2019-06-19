@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Checkout example</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Example store</a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="my-5">
+      <div class="row">
+        <div class="col-sm-7">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-5">
+          <h3>Your basket</h3>
+          <ul class="list-group">
+            <li class="list-group-item">Hand bags &pound;2000</li>
+            <li class="list-group-item">Straps &pound;50</li>
+          </ul>
+          <div id="checkout-with-creditdigital" class="mt-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../dist/bundle.js"></script>
+  <script>
+    /* START CREDITDIGITAL CODE */
+    var creditDigital = new CreditDigital();
+    var targetNode = "#checkout-with-creditdigital"; // The node on which the checkout button to appear
+    var options = { cash_price: 2500, business_token: "abc-123", } // The required data for the widget
+
+    creditDigital.checkoutHtml(targetNode, options);
+
+    /* END CREDITDIGITAL CODE */
+
+    // The rest of the Javascript code is to illustrate how you could update the monthly price
+    // from various other changes in the UI.
+    // The example we will use is increasing the quantity of the product we want to buy
+
+    var addToCardTotalEle = document.getElementById("total-for-cart");
+
+    document.getElementById("quantity").addEventListener("change", function (e) {
+      var quantitySelected = e.target.value;
+      var totalCost = price * quantitySelected;
+
+      creditDigital.productListingHtml(targetNode, price * quantitySelected);
+      addToCardTotalEle.textContent = totalCost;
+    });
+  </script>
+</body>
+
+</html>

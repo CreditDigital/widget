@@ -13,20 +13,24 @@ export interface ICheckoutPayload {
 }
 
 const productHTML = `
-<section id='credit-digital-product-listing'>
+<section class='creditdigital'>
   <div class='creditdigital-monthly-rate'>
     <p class='creditdigital-monthly-rate__amount'>%s</p>
     <img alt='pay monthly' class='creditdigital-monthly-rate__logo' src='https://widget.creditdigital.co.uk/CD_logo.png'>
   </div>
   <div class='creditdigital-description'>
     <p class='creditdigital-description__content'>CreditDigital allows you to split the cost of your purchase into monthly installments.</p>
-    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment [method] at checkout to apply! Rates start at 1.2% monthly and vary depending on the credit profile of your business.</p>
+    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at 1.2% monthly and vary depending on the credit profile of your business.</p>
     <p class='creditdigital-description__content'>Repay in full at any time and only be charged up to the day of repayment.</p>
   </div>
 </section>
 `;
 
 const productCSS = `
+.creditdigital {
+  border: 1px solid #ccc;
+}
+
 .creditdigital-monthly-rate {
   padding: 8px;
 }
@@ -51,7 +55,6 @@ const productCSS = `
 .creditdigital-description {
   background: #f4f4f4;
   padding: 8px;
-  border: 1px solid #ccc;
 }
 
 .creditdigital-description__content {
@@ -75,11 +78,12 @@ export default class CreditDigital {
     this.interestRate = INTEREST_RATE;
     this.creditDigitalURL = CREDIT_DIGITAL_URL;
 
-    if (options && !options.skipCSSInjection) {
-      const style = document.createElement('style');
-      style.innerHTML = productCSS;
-      document.body.appendChild(style);
+    if (options && options.skipCSSInjection) {
+      return;
     }
+    const style = document.createElement('style');
+    style.innerHTML = productCSS;
+    document.body.appendChild(style);
   }
 
   public setMinimumAmount(minimumAmount: number) {
