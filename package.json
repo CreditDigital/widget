@@ -2,8 +2,7 @@
   "name": "creditdigital-widget",
   "version": "0.0.1",
   "description": "JS widget to be used on product listing and checkout pages for websites using CreditDigital",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "webpack --mode=production",
