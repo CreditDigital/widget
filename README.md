@@ -68,7 +68,7 @@ creditDigital = new CreditDigital({ skipCSSInjection: true })
 
 *Note: You might want to opt-out in the checkout page if you are not planning to display the product listing container.*
 
-If you prefer to override some or all of the styles to make the resulting HTMN match the look and fill of your website, these are the classes you can override:
+If you prefer to override some or all of the styles to make the resulting HTML match the look and fill of your website, these are the classes you can override:
 
 ```css
 /* The main widget container */
