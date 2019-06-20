@@ -45,11 +45,11 @@ creditDigital.checkoutHtml(targetNode, options, myCallback);
 
 ### Possible options for checkout
 The available options to pass on the checkout are:
-- `cash_price` (required): The total amount of the purchase
-- `business_token` (required): The token identifier for your business. You are able to retrieve this from your CreditDigital dashboard.
-- `callback_url` (optional): A webhook url to keep you informed on the status of a particular application.
-- `invoice_number` (optional): An invoice number to be attached to the CreditDigital application for your reference.
-- `invoice_description` (optional): An invoice description to be attached to the CreditDigital application for your reference.
+- `cashPrice` (number : required): The total amount of the purchase
+- `businessToken` (string : required): The token identifier for your business. You are able to retrieve this from your CreditDigital dashboard.
+- `callbackUrl` (string : optional): A webhook url to keep you informed on the status of a particular application.
+- `invoiceNumber` (string : optional): An invoice number to be attached to the CreditDigital application for your reference.
+- `invoiceDescription` (string : optional): An invoice description to be attached to the CreditDigital application for your reference.
 
 ### Minimum Amount
 CreditDigital by default imposes a £250 minimum amount. If the total amount of a product or checkout is less than the minimum amount the checkout button will not appear and the product listing box will inform the user about the minimum.
@@ -126,9 +126,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    const href = encodeURI(`${this.creditDigital.creditDigitalURL}?cash_price=500`);
+    const href = encodeURI(`${this.creditDigital.creditDigitalURL}?cash_price=500&business_token=abc123`);
 
-    return <a href={`${this.creditDigital.creditDigitalURL}?cash_price=500`} target="_blank">Checkout with CreditDigital</a>;
+    return <a href={`${href}`} target="_blank">Checkout with CreditDigital</a>;
   }
 }
 ```

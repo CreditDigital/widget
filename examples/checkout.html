@@ -92,25 +92,11 @@
     /* START CREDITDIGITAL CODE */
     var creditDigital = new CreditDigital();
     var targetNode = "#checkout-with-creditdigital"; // The node on which the checkout button to appear
-    var options = { cash_price: 2500, business_token: "abc-123", } // The required data for the widget
+    var options = { business_token: "abc-123", some_other_stuff: 1 } // The required data for the widget
 
     creditDigital.checkoutHtml(targetNode, options);
 
     /* END CREDITDIGITAL CODE */
-
-    // The rest of the Javascript code is to illustrate how you could update the monthly price
-    // from various other changes in the UI.
-    // The example we will use is increasing the quantity of the product we want to buy
-
-    var addToCardTotalEle = document.getElementById("total-for-cart");
-
-    document.getElementById("quantity").addEventListener("change", function (e) {
-      var quantitySelected = e.target.value;
-      var totalCost = price * quantitySelected;
-
-      creditDigital.productListingHtml(targetNode, price * quantitySelected);
-      addToCardTotalEle.textContent = totalCost;
-    });
   </script>
 </body>
 

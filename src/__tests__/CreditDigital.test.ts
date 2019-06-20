@@ -62,7 +62,7 @@ test("displays a message about product total price being less than the minimum",
 test("checkout flow", () => {
   const creditDigital = new CreditDigital();
   const targetNode = "checkout";
-  const payload = { cash_price: 500, business_token: "amazing token" };
+  const payload = { cashPrice: 500, businessToken: "amazing token" };
   const callback = (url: string) => {
     encodedUrl = url;
   };

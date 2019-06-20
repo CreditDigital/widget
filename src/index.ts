@@ -5,11 +5,11 @@ const CREDIT_DIGITAL_URL = "https://www.creditdigital.co.uk/loans/new";
 
 export interface ICheckoutPayload {
   [index: string]: any;
-  cash_price: number;
-  business_token: string;
-  callback_url?: string;
-  invoice_description?: string;
-  invoice_number?: string;
+  cashPrice: number;
+  businessToken: string;
+  callbackUrl?: string;
+  invoiceDescription?: string;
+  invoiceNumber?: string;
 }
 
 const productHTML = `
@@ -64,6 +64,14 @@ const productCSS = `
 
 const fallbackCheckoutCallback = (url: string) => {
   location.href = url;
+};
+
+const camelToSnake = (s: string): string => {
+  return s
+    .replace(/[\w]([A-Z])/g, (m: string): string => {
+      return m[0] + "_" + m[1];
+    })
+    .toLowerCase();
 };
 
 export default class CreditDigital {
@@ -129,9 +137,15 @@ export default class CreditDigital {
     const node = document.querySelector(targetNode);
     const callback = checkoutCallback || fallbackCheckoutCallback;
 
+    if (!data.businessToken) {
+      console.warn("[CreditDigital Widget] businessToken is required");
+      return;
+    }
+
     if (data.cash_price < this.minimumAmount) {
       return;
     }
+
     if (!node) {
       return;
     }
@@ -152,7 +166,7 @@ export default class CreditDigital {
     const queryParams: string[] = [];
 
     Object.keys(data).forEach(key => {
-      queryParams.push(`${key}=${data[key]}`);
+      queryParams.push(`${camelToSnake(key)}=${data[key]}`);
     });
 
     const encodedUrl = encodeURI(`${this.creditDigitalURL}?${queryParams.join("&")}`);
