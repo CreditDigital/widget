@@ -8,7 +8,13 @@ The widget provides:
 - A information box with the monthly finance price given a price. This can be used both on product page and on the checkout.
 - A "Checkout with CreditDigital" button for checkout pages.
 
-#### Monthy pricing box
+### Installation
+You can pull the source code from https://unpkg.com/creditdigital-widget@0.0.2/dist/index.js. You can either vendor the code or put it in a `script` tag.
+```html
+<script src="https://unpkg.com/creditdigital-widget@0.0.2/dist/index.js"></script>
+```
+
+### Monthy pricing box
 To make the monthly pricing box appear:
 ```javascript
 var creditDigital = new CreditDigital();
@@ -17,6 +23,8 @@ var price = 1000; // The total amount for monthly finance
 
 creditDigital.productListingHtml(targetNode, price);
 ```
+
+### Checkout
 
 For the checkout page:
 ```javascript
