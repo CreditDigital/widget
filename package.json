@@ -1,12 +1,51 @@
 {
-  "name": "widget",
-  "version": "1.0.0",
-  "description": "echo # My CreditDigital JS Widget",
-  "main": "index.js",
+  "name": "creditdigital-widget",
+  "version": "0.0.1",
+  "description": "JS widget to be used on product listing and checkout pages for websites using CreditDigital",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --config jestconfig.json",
+    "build": "webpack --mode=production",
+    "format": "prettier \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "creditdigital",
+    "widget",
+    "finance"
+  ],
+  "author": {
+    "name": "Pericles Theodorou",
+    "email": "periclestheo@gmail.com",
+    "url": "https://www.periclestheo.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CreditDigital/widget"
+  },
+  "engines": {
+    "node": ">= 10.15",
+    "npm": ">= 6.4"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.14",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.3",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.2",
+    "webpack": "^4.34.0",
+    "webpack-cli": "^3.3.4"
+  }
 }
