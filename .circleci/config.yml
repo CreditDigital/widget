@@ -1,50 +1,55 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/repo
+  working_director: ~/repo
   docker:
     - image: circleci/node:jessie
 
+
 jobs:
   test:
-    <<: *defaults  
+    <<: *defaults
     steps:
       - checkout
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
 
       - run: npm install
+
       - run:
           name: Run tests
-          command: npm test
+          command: npm run test
 
-       - run:
+      - run:
           name: Run linter
           command: npm run lint
 
-        - run:
-          name: Run formatter
-          command: npm run -- --list-different
+      - run:
+          name: Run format
+          command: npm run format -- --list-different
 
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies--{{ checksum "package.json" }}
 
       - persist_to_workspace:
           root: ~/repo
           paths: .
+
   deploy:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
+
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+
       - run:
           name: Publish package
           command: npm publish
@@ -62,6 +67,6 @@ workflows:
             - test
           filters:
             tags:
-              only: /^v.*/
+              only: /^.*/
             branches:
               ignore: /.*/
