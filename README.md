@@ -9,9 +9,19 @@ The widget provides:
 - A "Checkout with CreditDigital" button for checkout pages.
 
 ### Installation
-You can pull the source code from https://unpkg.com/creditdigital-widget@0.0.2/dist/index.js. You can either vendor the code or put it in a `script` tag.
+Via `unkpg.com`
 ```html
-<script src="https://unpkg.com/creditdigital-widget@0.0.2/dist/index.js"></script>
+<script src="https://unpkg.com/creditdigital-widget"></script>
+```
+
+Via `yarn`
+```bash
+yarn add creditdigital-widget
+```
+
+Via `npm`
+```bash
+npm install creditdigital-widget
 ```
 
 ### Monthy pricing box
@@ -141,3 +151,5 @@ export default class App extends React.Component {
 }
 ```
 
+### Examples
+See the `examples` folder for a few demos.
