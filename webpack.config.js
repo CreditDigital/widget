@@ -19,6 +19,7 @@ module.exports = {
     library: "CreditDigital",
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'this',
+    libraryExport: 'default'
   }
 };
