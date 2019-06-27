@@ -40,7 +40,7 @@ For the checkout page:
 ```javascript
 var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
-var options = { cash_price: 1000, business_token: "abc-123", } // The required data for the widget
+var options = { cash_price: 1000, businessToken: "abc-123", } // The required data for the widget
 
 creditDigital.checkoutHtml(targetNode, options);
 ```
