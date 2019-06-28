@@ -44,7 +44,7 @@ test("displays a message about the monthly price for the product price", () => {
 
   const textNode = document.querySelector(".creditdigital-monthly-rate__amount") as HTMLElement;
 
-  expect(textNode.textContent).toEqual("Or pay as little as £23.68");
+  expect(textNode.textContent).toEqual("Or pay as little as £23.68 per month");
 });
 
 test("displays a message about product total price being less than the minimum", () => {
