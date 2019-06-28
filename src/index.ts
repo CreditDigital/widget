@@ -129,7 +129,10 @@ export default class CreditDigital {
         `Monthly repayment plans are available for purchases over <strong>&pound;${this.minimumAmount}</strong>`,
       );
     } else {
-      node.innerHTML = productHTML.replace("%s", `Or pay as little as <strong>&pound;${monthlyPrice}</strong> per month`);
+      node.innerHTML = productHTML.replace(
+        "%s",
+        `Or pay as little as <strong>&pound;${monthlyPrice}</strong> per month`,
+      );
     }
   }
 
