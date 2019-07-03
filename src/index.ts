@@ -19,9 +19,8 @@ const productHTML = `
     <img alt='pay monthly' class='creditdigital-monthly-rate__logo' src='https://widget.creditdigital.co.uk/CD_logo.png'>
   </div>
   <div class='creditdigital-description'>
-    <p class='creditdigital-description__content'>CreditDigital allows you to split the cost of your purchase into monthly installments.</p>
-    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at 1.2% monthly and vary depending on the credit profile of your business.</p>
-    <p class='creditdigital-description__content'>Repay in full at any time and only be charged up to the day of repayment.</p>
+    <p class='creditdigital-description__content'><a href="https://www.creditdigital.co.uk" target="_blank">CreditDigital</a> allows you to split the cost of your purchase into monthly installments.</p>
+    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at 1.2% monthly and vary depending on the credit profile of your business. Repay in full at any time and only be charged up to the day of repayment.</p>
   </div>
 </section>
 `;
@@ -60,6 +59,11 @@ const productCSS = `
 .creditdigital-description__content {
   margin: 0;
 }
+
+.creditdigital-description__content:first-child {
+  padding-bottom: 20px;
+}
+
 `;
 
 const fallbackCheckoutCallback = (url: string) => {
