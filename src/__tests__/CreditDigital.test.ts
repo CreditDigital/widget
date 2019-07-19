@@ -71,7 +71,7 @@ test("checkout flow", () => {
   document.body.innerHTML = `<div id="${targetNode}"></div>`;
   creditDigital.checkoutHtml(`#${targetNode}`, payload, callback);
 
-  const checkoutBtn = document.getElementById("credit-digital-checkout") as HTMLElement;
+  const checkoutBtn = document.querySelector(".creditdigital-checkout") as HTMLElement;
   checkoutBtn.click();
 
   expect(encodedUrl).toEqual(
