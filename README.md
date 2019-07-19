@@ -98,6 +98,9 @@ If you prefer to override some or all of the styles to make the resulting HTML m
 /* Controls the element with the monthly rate content */
 .creditdigital-monthly-rate__amount {}
 
+/* Controls the actual monthly price a customer would pay for the total */
+.creditdigital-monthly-rate__price {}
+
 /* Controls the logo */
 .creditdigital-monthly-rate__logo {}
 
@@ -106,6 +109,9 @@ If you prefer to override some or all of the styles to make the resulting HTML m
 
 /* Controls each paragraph around the description of CreditDigital */
 .creditdigital-description__content {}
+
+/* Controls the interest rate percentage */
+.creditdigital-description__interest-rate {}
 ```
 
 ## Advance Usage
