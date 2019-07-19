@@ -20,7 +20,7 @@ const productHTML = `
   </div>
   <div class='creditdigital-description'>
     <p class='creditdigital-description__content'><a href="https://www.creditdigital.co.uk" target="_blank">CreditDigital</a> allows you to split the cost of your purchase into monthly installments.</p>
-    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at 1.2% monthly and vary depending on the credit profile of your business. Repay in full at any time and only be charged up to the day of repayment.</p>
+    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at <span class="creditdigital-description__interest-rate">1.2%</span> monthly and vary depending on the credit profile of your business. Repay in full at any time and only be charged up to the day of repayment.</p>
   </div>
 </section>
 `;
@@ -45,6 +45,10 @@ const productCSS = `
   margin: 0;
 }
 
+.creditdigital-monthly-rate__price {
+  font-weight: bold;
+}
+
 .creditdigital-monthly-rate__logo {
   display: block;
   max-width: 100px;
@@ -63,6 +67,8 @@ const productCSS = `
 .creditdigital-description__content:first-child {
   padding-bottom: 20px;
 }
+
+.creditdigital-description__interest-rate {}
 
 `;
 
@@ -130,12 +136,12 @@ export default class CreditDigital {
     if (productPrice < this.minimumAmount) {
       node.innerHTML = productHTML.replace(
         "%s",
-        `Monthly repayment plans are available for purchases over <strong>&pound;${this.minimumAmount}</strong>`,
+        `Monthly repayment plans are available for purchases over <span class="creditdigital-monthly-rate__price">&pound;${this.minimumAmount}</span>`,
       );
     } else {
       node.innerHTML = productHTML.replace(
         "%s",
-        `Or pay as little as <strong>&pound;${monthlyPrice}</strong> per month`,
+        `Or pay as little as <span class="creditdigital-monthly-rate__price">&pound;${monthlyPrice}</span> per month`,
       );
     }
   }
