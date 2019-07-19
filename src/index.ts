@@ -70,6 +70,39 @@ const productCSS = `
 
 .creditdigital-description__interest-rate {}
 
+.creditdigital-checkout {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 2px 12px;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: none;
+  text-decoration: none;
+  border-color: rgba(127, 127, 127, 0.4);;
+  color: #363636;
+  background: rgba(224, 224, 224, 0.5);
+}
+
+.creditdigital-checkout:hover {
+  color: #363636;
+  text-decoration: none;
+}
+
+.creditdigital-checkout__logo {
+  padding-right: 6px;
+}
 `;
 
 const fallbackCheckoutCallback = (url: string) => {
@@ -163,11 +196,11 @@ export default class CreditDigital {
       return;
     }
 
-    node.innerHTML = `<div>
-        <a style="color:black;cursor:pointer;" id="credit-digital-checkout">
-          <img src="https://widget.creditdigital.co.uk/paywithcd.png" alt="pay monthly with CreditDigital" />
-        </a>
-      </div>`;
+    node.innerHTML = `
+        <a href="https://www.creditdigital.co.uk" class="creditdigital-checkout">
+          <img src="https://creditdigital-widget.s3.eu-west-2.amazonaws.com/creditdigital-logo-transparent.png" title="credit digital logo" width="50" class="creditdigital-checkout__logo" />
+          Pay in instalments
+      </a>`;
 
     const checkoutImg = document.querySelector(targetNode) as HTMLElement;
     if (!checkoutImg) {
