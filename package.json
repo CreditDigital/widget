@@ -1,6 +1,6 @@
 {
   "name": "creditdigital-widget",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "JS widget to be used on product listing and checkout pages for websites using CreditDigital",
   "main": "dist/index.js",
   "scripts": {
