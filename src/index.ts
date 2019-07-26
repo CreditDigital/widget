@@ -197,9 +197,9 @@ export default class CreditDigital {
     }
 
     node.innerHTML = `
-        <a href="https://www.creditdigital.co.uk" class="creditdigital-checkout">
-          <img src="https://d3h637fkwxijuq.cloudfront.net/creditdigital-logo-transparent.png" title="credit digital logo" width="50" class="creditdigital-checkout__logo" />
-          Pay in instalments
+      <a style="color: black; cursor: pointer;" class="creditdigital-checkout">
+        <img src="https://d3h637fkwxijuq.cloudfront.net/creditdigital-logo-transparent.png" title="credit digital logo" width="50" class="creditdigital-checkout__logo" />
+        Pay in instalments
       </a>`;
 
     const checkoutImg = document.querySelector(targetNode) as HTMLElement;
