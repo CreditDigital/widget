@@ -1,5 +1,5 @@
 require("../../dist/index.js");
-const fs = require("fs")
+const fs = require("fs");
 
 test("default minimumAmount is set", () => {
   const creditDigital = new CreditDigital();
@@ -43,7 +43,7 @@ test("displays a message about the monthly price for the product price", () => {
   document.body.innerHTML = `<div id="${targetNode}"></div>`;
   creditDigital.productListingHtml(`#${targetNode}`, creditDigital.minimumAmount);
 
-  const textNode = document.querySelector(".creditdigital-monthly-rate__amount") ;
+  const textNode = document.querySelector(".creditdigital-monthly-rate__amount");
 
   expect(textNode.textContent).toEqual("Or pay as little as £23.68 per month");
 });
@@ -64,7 +64,7 @@ test("checkout flow", () => {
   const creditDigital = new CreditDigital();
   const targetNode = "checkout";
   const payload = { cashPrice: 500, businessToken: "amazing token" };
-  const callback = (url) => {
+  const callback = url => {
     encodedUrl = url;
   };
   let encodedUrl = "";
