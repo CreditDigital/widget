@@ -40,7 +40,7 @@ For the checkout page:
 ```javascript
 var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
-var options = { cash_price: 1000, businessToken: "abc-123", } // The required data for the widget
+var options = { cashPrice: 1000, businessToken: "abc-123", } // The required data for the widget
 
 creditDigital.checkoutHtml(targetNode, options);
 ```
@@ -51,7 +51,7 @@ You can pass your own callback to the `.checkoutHtml` which will override the re
 ```javascript
 var creditDigital = new CreditDigital();
 var targetNode = "#my-id"; // The node on which the checkout button to appear
-var options = { cash_price: 1000, business_token: "abc-123", } // The required data for the widget
+var options = { cashPrice: 1000, businessToken: "abc-123", } // The required data for the widget
 var myCallback = function (url) {
   // Do something with the URL
   console.log(url);

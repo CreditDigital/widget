@@ -1,0 +1,77 @@
+.creditdigital {
+  border: 1px solid #ccc;
+}
+
+.creditdigital-monthly-rate {
+  padding: 8px;
+}
+
+.creditdigital-monthly-rate:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.creditdigital-monthly-rate__amount {
+  float: left;
+  margin: 0;
+}
+
+.creditdigital-monthly-rate__price {
+  font-weight: bold;
+}
+
+.creditdigital-monthly-rate__logo {
+  display: block;
+  max-width: 100px;
+  float: right;
+}
+
+.creditdigital-description {
+  background: #f4f4f4;
+  padding: 8px;
+}
+
+.creditdigital-description__content {
+  margin: 0;
+}
+
+.creditdigital-description__content:first-child {
+  padding-bottom: 20px;
+}
+
+.creditdigital-description__interest-rate {}
+
+.creditdigital-checkout {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 2px 12px;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-transform: none;
+  text-decoration: none;
+  border-color: rgba(127, 127, 127, 0.4);;
+  color: #363636;
+  background: rgba(224, 224, 224, 0.5);
+}
+
+.creditdigital-checkout:hover {
+  color: #363636;
+  text-decoration: none;
+}
+
+.creditdigital-checkout__logo {
+  padding-right: 6px;
+}
