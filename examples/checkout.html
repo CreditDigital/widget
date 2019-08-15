@@ -88,12 +88,12 @@
   </div>
 
 
-  <script src="https://unpkg.com/creditdigital-widget"></script>
+  <script src="../dist/index.js"></script>
   <script>
     /* START CREDITDIGITAL CODE */
     var creditDigital = new CreditDigital();
     var targetNode = "#checkout-with-creditdigital"; // The node on which the checkout button to appear
-    var options = { business_token: "abc-123", some_other_stuff: 1 } // The required data for the widget
+    var options = { businessToken: "abc-123", someOtherStuff: 1 } // The required data for the widget
 
     creditDigital.checkoutHtml(targetNode, options);
 

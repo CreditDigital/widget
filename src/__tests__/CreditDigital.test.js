@@ -1,4 +1,5 @@
-import CreditDigital, { ICheckoutPayload } from "../index";
+require("../../dist/index.js");
+const fs = require("fs");
 
 test("default minimumAmount is set", () => {
   const creditDigital = new CreditDigital();
@@ -42,7 +43,7 @@ test("displays a message about the monthly price for the product price", () => {
   document.body.innerHTML = `<div id="${targetNode}"></div>`;
   creditDigital.productListingHtml(`#${targetNode}`, creditDigital.minimumAmount);
 
-  const textNode = document.querySelector(".creditdigital-monthly-rate__amount") as HTMLElement;
+  const textNode = document.querySelector(".creditdigital-monthly-rate__amount");
 
   expect(textNode.textContent).toEqual("Or pay as little as £23.68 per month");
 });
@@ -54,7 +55,7 @@ test("displays a message about product total price being less than the minimum",
   document.body.innerHTML = `<div id="${targetNode}"></div>`;
   creditDigital.productListingHtml(`#${targetNode}`, creditDigital.minimumAmount - 1);
 
-  const textNode = document.querySelector(".creditdigital-monthly-rate__amount") as HTMLElement;
+  const textNode = document.querySelector(".creditdigital-monthly-rate__amount");
 
   expect(textNode.textContent).toEqual("Monthly repayment plans are available for purchases over £250");
 });
@@ -63,7 +64,7 @@ test("checkout flow", () => {
   const creditDigital = new CreditDigital();
   const targetNode = "checkout";
   const payload = { cashPrice: 500, businessToken: "amazing token" };
-  const callback = (url: string) => {
+  const callback = url => {
     encodedUrl = url;
   };
   let encodedUrl = "";
@@ -71,7 +72,7 @@ test("checkout flow", () => {
   document.body.innerHTML = `<div id="${targetNode}"></div>`;
   creditDigital.checkoutHtml(`#${targetNode}`, payload, callback);
 
-  const checkoutBtn = document.querySelector(".creditdigital-checkout") as HTMLElement;
+  const checkoutBtn = document.querySelector(".creditdigital-checkout");
   checkoutBtn.click();
 
   expect(encodedUrl).toEqual(

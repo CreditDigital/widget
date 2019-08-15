@@ -4,13 +4,15 @@
   "description": "JS widget to be used on product listing and checkout pages for websites using CreditDigital",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest --config jestconfig.json",
-    "build": "webpack --mode=production",
+    "test": "jest",
+    "build": "parcel build src/product_listing.css && parcel build src/index.js",
     "format": "prettier \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm run typecheck && npm test && npm run lint",
     "preversion": "npm run lint",
+    "start": "parcel build src/product_listing.css && parcel watch src/product_listing.css src/index.js & serve",
+    "typecheck": "tsc --noEmit --lib es2015,dom src/**/*.ts",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
@@ -37,15 +39,15 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^24.0.14",
+    "@types/node": "^12.7.2",
+    "autoprefixer": "^9.6.1",
     "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3",
+    "postcss-modules": "^1.4.1",
     "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2",
-    "ts-loader": "^6.0.3",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.5.2",
-    "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.4"
-  }
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {}
 }

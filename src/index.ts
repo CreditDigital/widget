@@ -12,99 +12,6 @@ export interface ICheckoutPayload {
   invoiceNumber?: string;
 }
 
-const productHTML = `
-<section class='creditdigital'>
-  <div class='creditdigital-monthly-rate'>
-    <p class='creditdigital-monthly-rate__amount'>%s</p>
-    <img alt='pay monthly' class='creditdigital-monthly-rate__logo' src='https://widget.creditdigital.co.uk/CD_logo.png'>
-  </div>
-  <div class='creditdigital-description'>
-    <p class='creditdigital-description__content'><a href="https://www.creditdigital.co.uk" target="_blank">CreditDigital</a> allows you to split the cost of your purchase into monthly installments.</p>
-    <p class='creditdigital-description__content'>Simply select CreditDigital as your payment method at checkout to apply! Rates start at <span class="creditdigital-description__interest-rate">1.2%</span> monthly and vary depending on the credit profile of your business. Repay in full at any time and only be charged up to the day of repayment.</p>
-  </div>
-</section>
-`;
-
-const productCSS = `
-.creditdigital {
-  border: 1px solid #ccc;
-}
-
-.creditdigital-monthly-rate {
-  padding: 8px;
-}
-
-.creditdigital-monthly-rate:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.creditdigital-monthly-rate__amount {
-  float: left;
-  margin: 0;
-}
-
-.creditdigital-monthly-rate__price {
-  font-weight: bold;
-}
-
-.creditdigital-monthly-rate__logo {
-  display: block;
-  max-width: 100px;
-  float: right;
-}
-
-.creditdigital-description {
-  background: #f4f4f4;
-  padding: 8px;
-}
-
-.creditdigital-description__content {
-  margin: 0;
-}
-
-.creditdigital-description__content:first-child {
-  padding-bottom: 20px;
-}
-
-.creditdigital-description__interest-rate {}
-
-.creditdigital-checkout {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  padding: 2px 12px;
-  border-radius: 8px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  text-transform: none;
-  text-decoration: none;
-  border-color: rgba(127, 127, 127, 0.4);;
-  color: #363636;
-  background: rgba(224, 224, 224, 0.5);
-}
-
-.creditdigital-checkout:hover {
-  color: #363636;
-  text-decoration: none;
-}
-
-.creditdigital-checkout__logo {
-  padding-right: 6px;
-}
-`;
-
 const fallbackCheckoutCallback = (url: string) => {
   location.href = url;
 };
@@ -118,6 +25,9 @@ const camelToSnake = (s: string): string => {
 };
 
 export default class CreditDigital {
+  public static productHTML: string;
+  public static productCSS: string;
+
   public minimumAmount: number;
   public readonly creditDigitalURL: string;
   public readonly interestRate: number;
@@ -133,7 +43,7 @@ export default class CreditDigital {
       return;
     }
     const style = document.createElement("style");
-    style.innerHTML = productCSS;
+    style.innerHTML = CreditDigital.productCSS;
     document.body.appendChild(style);
   }
 
@@ -167,12 +77,12 @@ export default class CreditDigital {
     const monthlyPrice = this.productListingMonthlyRate(productPrice);
 
     if (productPrice < this.minimumAmount) {
-      node.innerHTML = productHTML.replace(
+      node.innerHTML = CreditDigital.productHTML.replace(
         "%s",
         `Monthly repayment plans are available for purchases over <span class="creditdigital-monthly-rate__price">&pound;${this.minimumAmount}</span>`,
       );
     } else {
-      node.innerHTML = productHTML.replace(
+      node.innerHTML = CreditDigital.productHTML.replace(
         "%s",
         `Or pay as little as <span class="creditdigital-monthly-rate__price">&pound;${monthlyPrice}</span> per month`,
       );
@@ -188,7 +98,7 @@ export default class CreditDigital {
       return;
     }
 
-    if (data.cash_price < this.minimumAmount) {
+    if (data.cashPrice < this.minimumAmount) {
       return;
     }
 
